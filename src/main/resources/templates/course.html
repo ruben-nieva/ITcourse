@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/main">
+	  
+  <head>    
+
+    <link href="/css/carousel.css" rel="stylesheet" 
+    	  th:href="@{/css/carousel.css}"/>
+	
+	<title>Courses</title>
+	
+  </head>
+
+  <body>
+  
+    <div layout:fragment="content">
+    
+    <div class="container">    
+    	<br/><br/><br/>
+    	<h1 th:text="${courseName}">Courses Page</h1>
+    
+    	<br/><h3>Content:</h3>
+    	<span th:text="${courseDescription}">Content Goes Here</span>
+    </div>
+    
+     
+   </div>
+    
+    
+  </body>
+</html>
