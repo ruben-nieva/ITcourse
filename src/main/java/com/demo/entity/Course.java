@@ -34,7 +34,8 @@ public class Course extends BaseEntity<Long> {
 	public Course(){}
 	
 	
-	public Course(String name, String description){		
+	public Course(Long id, String name, String description){	
+		this.idCourse = id;
 		this.name=name;
 		this.description=description;
 	}

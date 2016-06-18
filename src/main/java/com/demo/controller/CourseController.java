@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,16 +31,38 @@ public class CourseController {
     }
     
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
-    public String persons(Model model){
+    public String listarCursos(Model model){
         model.addAttribute("pagina", "cursos");
-        model.addAttribute("listadoCursos", this.courseRepository.findAll());
+        model.addAttribute("listadeCursos", this.courseRepository.findAll());
         return "showCourses";
     }
-	
+    
+    
+    @RequestMapping(value="/newCourse")
+    public String newCourse(ModelMap model) {
+        model.addAttribute("pagina", "course");
+        model.addAttribute("nuevocurso", new Course());
+        return "newCourse";
+    }
+    
+    
+    @RequestMapping(value = "course", method = RequestMethod.POST)
+    public String saveCourse(@ModelAttribute Course course, Model model){
+    	
+    	//Add validation function to avoid malformed object 
+    	  	
+    	LOGGER.debug("Rendering POST ADD COURSE" + course.getName());
+
+        courseRepository.save(course);
+
+        return "redirect:/courses/";
+    }
+    
+
 	@RequestMapping(value = "/{courseName}", method = RequestMethod.GET)
 	public String showCoure(@PathVariable() String courseName, Model model){
 		
-		LOGGER.debug("Rendering vew for Course:" + courseName);
+		LOGGER.debug("Rendering view for Course:" + courseName);
 		
 		Course course= courseRepository.findByName(courseName);
 		

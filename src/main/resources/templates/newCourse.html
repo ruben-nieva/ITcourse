@@ -3,30 +3,83 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorator="layout/main">
 	  
-  <head>    
-
-    <link href="/css/carousel.css" rel="stylesheet" 
-    	  th:href="@{/css/carousel.css}"/>
-	
-	<title>Courses</title>
-	
+  <head>
+    <link href="/css/carousel.css" rel="stylesheet" th:href="@{/css/carousel.css}"/>	
+	<title>Courses</title>	
   </head>
-
-  <body>
   
-    <div layout:fragment="content">
+    <body>
+  
+    <div layout:fragment="content">    
+    <!-- INIT CONTENT -->
     
     <div class="container">    
-    	<br/><br/><br/>
-    	<h1 th:text="${courseName}">Courses Page</h1>
-    
-    	<br/><h3>Description:</h3>
-    	<span>Description Goes Here</span>
+    <br/><br/><br/><br/><br/>
+	
+        <div class="modal-header">
+           <h4 class="modal-title">New Course</h4>
+        </div>
+        <div class="modal-body">
+
+         <form class="form-horizontal" role="form" th:action="@{/course}" th:object="${nuevocurso}" method="post">
+		
+		  <div class="form-group">
+		    <label for="lblCourse" class="col-lg-2 control-label">Course Name</label>
+		    <div class="col-lg-6">
+		      <input type="text" class="form-control" th:field="*{name}" placeholder="Course Name"/>
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="lblDescription" class="col-lg-2 control-label">Description</label>
+		    <div class="col-lg-6">
+		      <input type="text" class="form-control" th:field="*{description}" placeholder="Brief course description" />
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="startDate" class="col-lg-2 control-label">Start Date/Time</label>
+		    <div class="col-lg-6">
+		      <input type="text" class="form-control" id="idStartDate" placeholder="Date/Time"/>
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="lblDuration" class="col-lg-2 control-label">Duration</label>
+		    <div class="col-lg-6">
+		      <input type="text" class="form-control" id="idDuration" placeholder="Duration"/>
+		    </div>
+		  </div>
+		  
+		  							      							      
+		   <div class="form-group row">
+		       <label for="lblInstructor" class="col-sm-2 control-label">Instructor</label>
+		       <div class="col-sm-4">
+		       <select class="selectpicker form-control" id="idSelectInstructor">
+		        <option>Aldana</option>
+		        <option>Pepita</option>
+		        <option>Lucho</option>
+		        </select>
+		     </div>
+		  </div>						      
+					  
+		  <div class="modal-footer">
+               <button type="submit" name="save" class="btn btn-primary" data-dismiss="modal">Save</button>
+               <button type="submit" name="cancel" class="btn btn-danger">Cancel</button>
+           </div>
+           
+		</form>
+              
+      </div>     
+                   
     </div>
     
-     
+   <!-- FIN CONTENT -->
    </div>
     
     
   </body>
 </html>
+  
+
+

@@ -18,5 +18,19 @@ public class HomeController {
 		LOGGER.debug("Redering home view");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(){		
+		
+		LOGGER.debug("Redering login page");
+		return "login";
+	}
+	
+	@RequestMapping(value = "/addStudent", method = RequestMethod.GET)
+	public String addNewStudent(){		
+		
+		LOGGER.debug("Redering addStudent");
+		return "newAlumno";
+	}
 
 }

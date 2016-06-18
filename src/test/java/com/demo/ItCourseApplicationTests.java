@@ -21,11 +21,11 @@ public class ItCourseApplicationTests {
 	@Test
 	public void findByNameTest() {
 		
-		Course course1 = new Course("Algebra", "Sample course text1");
-		Course course2 = new Course("Fisica", "Sample course text2");
-		Course course3 = new Course("Estadistica", "Sample course text3");
-		Course course4 = new Course("Paradigmas I", "Sample course text4");
-		Course course5 = new Course("Geometria", "Sample course text5");
+		Course course1 = new Course(1L, "Algebra", "Sample course text1");
+		Course course2 = new Course(2L, "Fisica", "Sample course text2");
+		Course course3 = new Course(3L, "Estadistica", "Sample course text3");
+		Course course4 = new Course(4L, "Paradigmas I", "Sample course text4");
+		Course course5 = new Course(5L, "Geometria", "Sample course text5");
 
 		courseRepository.save(course1);
 		courseRepository.save(course2);

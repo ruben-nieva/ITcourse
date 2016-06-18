@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/main">
+	  
+  <head>    
+    <link href="/css/carousel.css" rel="stylesheet" 
+    	  th:href="@{/css/carousel.css}"/>	
+	<title>Courses</title>	
+  </head>
+  
+    <body>
+  
+    <div layout:fragment="content">
+    
+    <!-- INIT CONTENT -->
+    
+    <div class="container">    
+    <br/><br/><br/><br/>
+    
+    <div class="modal-header">
+         <h4 class="modal-title">New Student</h4>
+    </div>     
+    
+       <div class="modal-body">
+
+		<form class="form-horizontal" role="form">
+		
+		  <div class="form-group">
+		    <label for="firstName" class="col-lg-2 control-label">First Name</label>
+		    <div class="col-lg-6">
+		      <input type="text" class="form-control" id="firstName" placeholder="First Name"/>
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="lastName" class="col-lg-2 control-label">Last Name</label>
+		    <div class="col-lg-6">
+		      <input type="text" class="form-control" id="inlastName" placeholder="Last Name"/>
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="emailAlumno" class="col-lg-2 control-label">Email</label>
+		    <div class="col-lg-6">
+		      <input type="email" class="form-control" id="emailAlumno" placeholder="Email"/>
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="address" class="col-lg-2 control-label">Address</label>
+		    <div class="col-lg-6">
+		      <input type="text" class="form-control" id="inAddress" placeholder="Address"/>
+		    </div>
+		  </div>
+		  
+		  							      							      
+		   <div class="form-group row">
+		       <label for="countrySelect" class="col-sm-2 control-label">Country</label>
+		       <div class="col-sm-4">
+		       <select class="selectpicker form-control" id="idCountrySelect">
+		           <option>Argentina</option>
+		        <option>Brasil</option>
+		        <option>Venezuela</option>
+		        </select>
+		     </div>
+		  </div>						      
+					  
+		  <div class="modal-footer">
+               <button type="submit" name="save" class="btn btn-primary" data-dismiss="modal">Save</button>
+               <button type="submit" name="cancel" class="btn btn-danger">Cancel</button>
+           </div>
+		</form>   
+		
+		 </div>
+		
+    
+    </div>
+    
+   <!-- FIN CONTENT -->
+   </div>
+    
+    
+  </body>
+</html>
+  
+
+
