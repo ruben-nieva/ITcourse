@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,13 +48,28 @@ public class CourseController {
     
     
     @RequestMapping(value = "course", method = RequestMethod.POST)
-    public String saveCourse(@ModelAttribute Course course, Model model){
+    public String saveCourse(@ModelAttribute Course course, BindingResult bindingResult, final ModelMap model){
     	
     	//Add validation function to avoid malformed object 
     	  	
     	LOGGER.debug("Rendering POST ADD COURSE" + course.getName());
-
-        courseRepository.save(course);
+    	
+    	if ( courseRepository.findByName(course.getName()) == null){    		
+    		courseRepository.save(course);    		
+    	}else{
+    		LOGGER.debug("El curso ya ya existe");
+    	}    	
+    	        
+        model.clear();
+                
+        return "redirect:/courses/";
+    }
+    
+      
+    @RequestMapping(value = "course", params={"cancel"}, method = RequestMethod.POST)
+    public String goBack(@ModelAttribute Course course, Model model){
+    	    	  	
+    	LOGGER.debug("Rendering POST Cancel COURSE"); 
 
         return "redirect:/courses/";
     }
@@ -68,23 +84,28 @@ public class CourseController {
         return "course-view";
     }
     
+    @RequestMapping(value = "/deleteCourse/{id}", method = RequestMethod.GET)
+    public String deleteCourse(@PathVariable Long id, Course course, final ModelMap model){
+    	
+   	    course = courseRepository.findOne(id);
+   	    
+   	    LOGGER.debug("Rendering Delete COURSE Name: " + course.getName()); 
+    	
+       	courseRepository.delete(course);
+        model.clear();
 
-	@RequestMapping(value = "/{courseName}", method = RequestMethod.GET)
-	public String showCoure(@PathVariable() String courseName, Model model){
-		
-		LOGGER.debug("Rendering view for Course:" + courseName);
-		
-		Course course= courseRepository.findByName(courseName);
-		
-		if ( course==null ){			
-			LOGGER.debug("Course not found: " +  courseName);
-			return "form";
-		}
-		
-		model.addAttribute("courseName", courseName);
-		model.addAttribute("courseDescription", course.getDescription());
-		
-		return "course";
-	}
+        return "redirect:/courses/";
+    }
+    
+    
+    @RequestMapping(value="/editCourse/{id}")
+    public String updateCourse(@PathVariable Long id, Model model) {
+    	LOGGER.debug("Rendering view for editCourse ID:" + id);
+    	
+        model.addAttribute("pagina", "courses");
+        model.addAttribute("nuevocurso", this.courseRepository.findOne(id));
+        return "newCourse";
+    }
+	
 
 }
