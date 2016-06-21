@@ -38,7 +38,10 @@
                                     <td th:text="${{p.idCourse}}">ID</td>
                                     <td th:text="${{p.name}}">Name</td>
                                     <td th:text="${{p.description}}">Description</td>
-                                    <td><a th:href="@{'/editCourse/'+ ${p.idCourse}}">Edit</a></td>
+                                    <td>
+                                    	<a th:href="@{'/viewCourse/'+ ${p.idCourse}}">View</a><a> /</a>
+                                    	<a th:href="@{'/deleteCourse/'+ ${p.idCourse}}">Delete</a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

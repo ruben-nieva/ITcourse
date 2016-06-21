@@ -58,6 +58,16 @@ public class CourseController {
         return "redirect:/courses/";
     }
     
+    @RequestMapping(value="/viewCourse/{id}", method = RequestMethod.GET)
+    public String viewCourse(@PathVariable Long id, Model model) {
+    	
+    	LOGGER.debug("Rendering view for Course:" + id);
+    	
+        model.addAttribute("pagina", "courses");
+        model.addAttribute("course", this.courseRepository.findOne(id));
+        return "course-view";
+    }
+    
 
 	@RequestMapping(value = "/{courseName}", method = RequestMethod.GET)
 	public String showCoure(@PathVariable() String courseName, Model model){
