@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	   xmlns="http://www.w3.org/1999/xhtml"
 	  layout:decorator="layout/main">
 	  
   <head>
-    <link href="/css/carousel.css" rel="stylesheet" th:href="@{/css/carousel.css}"/>	
-	<title>Courses</title>	
+   
+	<title>Courses</title>
+	
+  
   </head>
   
     <body>
+    
+   
   
     <div layout:fragment="content">    
     <!-- INIT CONTENT -->
@@ -19,6 +24,9 @@
         <div class="modal-header">
            <h4 class="modal-title">New Course</h4>
         </div>
+        
+         <p>Date: <input type="date" id="datepic2"/></p>
+         
         <div class="modal-body">
 
          <form class="form-horizontal" role="form" th:action="@{/course}" th:object="${nuevocurso}" method="post">
@@ -39,8 +47,8 @@
 		  
 		  <div class="form-group">
 		    <label for="startDate" class="col-lg-2 control-label">Start Date/Time</label>
-		    <div class="col-lg-6">
-		      <input type="text" class="form-control" id="idStartDate" placeholder="Date/Time"/>
+		    <div class="col-lg-3">
+		      <input type="date" class="form-control" id="datepic2"/>		      	  
 		    </div>
 		  </div>
 		  
@@ -50,7 +58,7 @@
 		      <input type="text" class="form-control" id="idDuration" placeholder="Duration"/>
 		    </div>
 		  </div>
-		  
+
 		  							      							      
 		   <div class="form-group row">
 		       <label for="lblInstructor" class="col-sm-2 control-label">Instructor</label>
