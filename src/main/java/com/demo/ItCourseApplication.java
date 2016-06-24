@@ -6,12 +6,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.demo.repository.AlumnoRepository;
 import com.demo.repository.CourseRepository;
 
 @SpringBootApplication
-public class ItCourseApplication {
+public class ItCourseApplication extends WebMvcConfigurerAdapter{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ItCourseApplication.class, args);
@@ -34,6 +36,16 @@ public class ItCourseApplication {
 				
 			}
 		};
+	
+	}
+	
+	@Override
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+		super.addResourceHandlers(registry);
+		registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+		registry.addResourceHandler("/src/main/web/css/**").addResourceLocations("/src/main/web/css/");
+		registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+		
 	
 	}
 }

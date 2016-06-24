@@ -1,32 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	   xmlns="http://www.w3.org/1999/xhtml"
-	  layout:decorator="layout/main">
-	  
-  <head>
-   
-	<title>Courses</title>
-	
-  
-  </head>
-  
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+    
+    <th:block th:include="layout/headerinc :: head"></th:block>      
+
+    <title>Cursos IT</title>
+        
+	<link type="text/css" rel="Stylesheet" href="http://ajax.microsoft.com/ajax/jquery.ui/1.8.6/themes/smoothness/jquery-ui.css" />
+
+
+
+
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
+	</script>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js">
+	</script>
+
+
+	<script type="text/javascript">
+	    $(function () {
+	        $("#datepic").datepicker();
+	    });
+	</script>
+
+	<script type="text/javascript">
+	    $(function () {
+	        $("#datepic2").datepicker();
+	    });
+	</script>
+
+    </head>
+    
     <body>
-    
-   
-  
-    <div layout:fragment="content">    
-    <!-- INIT CONTENT -->
-    
-    <div class="container">    
-    <br/><br/><br/><br/><br/>
-	
+      
+      <div th:replace="layout/tabs :: 'menu'">&nbsp;</div>
+      <br/><br/><br/><br/>
+            
+      <div class="container">    
+       	
         <div class="modal-header">
            <h4 class="modal-title">New Course</h4>
         </div>
         
-         <p>Date: <input type="date" id="datepic2"/></p>
-         
         <div class="modal-body">
 
          <form class="form-horizontal" role="form" th:action="@{/course}" th:object="${nuevocurso}" method="post">
@@ -46,14 +62,21 @@
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="startDate" class="col-lg-2 control-label">Start Date/Time</label>
+		    <label for="startDate" class="col-lg-2 control-label">Start Date</label>
 		    <div class="col-lg-3">
-		      <input type="date" class="form-control" id="datepic2"/>		      	  
+		      <input type="text" class="form-control" id="datepic"/>		      	  
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="lblDuration" class="col-lg-2 control-label">Duration</label>
+		    <label for="endDate" class="col-lg-2 control-label">End Date</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control" id="datepic2"/>		      	  
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="lblSchedule" class="col-lg-2 control-label">Schedule</label>
 		    <div class="col-lg-6">
 		      <input type="text" class="form-control" id="idDuration" placeholder="Duration"/>
 		    </div>
@@ -83,11 +106,14 @@
     </div>
     
    <!-- FIN CONTENT -->
-   </div>
+
+            
+
+           
+    </body>
     
+    <footer>
+    	 <div th:replace="layout/footer :: 'footer'">&copy; 2013 The Static Templates</div>
+    </footer>
     
-  </body>
 </html>
-  
-
-
