@@ -26,13 +26,13 @@ public class ItCourseApplication{
 			@Override			
 			public void run(String... strings) throws Exception {
 				
-				Course course1 = new Course(1L, "Algebra", "Sample course text1");
-				Course course2 = new Course(2L, "Fisica", "Sample course text2");
-				Course course3 = new Course(3L, "Estadistica", "Sample course text3");
-				
-				courseRepository.save(course1);
-				courseRepository.save(course2);
-				courseRepository.save(course3);
+//				Course course1 = new Course(1L, "Algeba", "Sample course text1");
+//				Course course2 = new Course(2L, "Fisica", "Sample course text2");
+//				Course course3 = new Course(3L, "Estadistica", "Sample course text3");
+//				
+//				courseRepository.save(course1);
+//				courseRepository.save(course2);
+//				courseRepository.save(course3);
 				
 			}
 		};
