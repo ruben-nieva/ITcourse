@@ -13,7 +13,7 @@ import com.demo.repository.AlumnoRepository;
 import com.demo.repository.CourseRepository;
 
 @SpringBootApplication
-public class ItCourseApplication extends WebMvcConfigurerAdapter{
+public class ItCourseApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ItCourseApplication.class, args);
@@ -39,13 +39,5 @@ public class ItCourseApplication extends WebMvcConfigurerAdapter{
 	
 	}
 	
-	@Override
-	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-		super.addResourceHandlers(registry);
-		registry.addResourceHandler("/images/**").addResourceLocations("/images/");
-		registry.addResourceHandler("/src/main/web/css/**").addResourceLocations("/src/main/web/css/");
-		registry.addResourceHandler("/js/**").addResourceLocations("/js/");
-		
-	
-	}
+
 }

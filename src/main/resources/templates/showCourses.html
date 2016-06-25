@@ -30,6 +30,8 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -38,6 +40,8 @@
                                     <td th:text="${{p.idCourse}}">ID</td>
                                     <td th:text="${{p.name}}">Name</td>
                                     <td th:text="${{p.description}}">Description</td>
+                                    <td th:text="${{p.startDate}}">Start Date</td>
+									<td th:text="${{p.endDate}}">End Date</td>
                                     <td>
                                     	<a th:href="@{'/viewCourse/'+ ${p.idCourse}}">View</a><a> /</a>
                                     	<a th:href="@{'/deleteCourse/'+ ${p.idCourse}}">Delete</a>
