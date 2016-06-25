@@ -53,6 +53,14 @@ public class Course extends BaseEntity<Long> {
 		this.description=description;
 	}
 	
+	public Course(Long id, String name, String description, Date startDate, Date endDate){	
+		this.idCourse = id;
+		this.name=name;
+		this.description=description;
+		this.startDate=startDate;
+		this.endDate=endDate;
+	}
+	
 	@Override
 	public Long getIdCourse() {
 		return idCourse;
